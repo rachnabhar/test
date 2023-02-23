@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<setup xmlns="http://databene.org/benerator/${version.version}"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://databene.org/benerator/${version.version} benerator-${version.version}.xsd">
+
+        <comment>
+                Test project
+        </comment>
+        <import platforms="csv" />
+        <echo message="Starting test data generation for test feed..." />
+
+        <comment>1_6892_list11</comment>
+        <generate type="FEED_RAW_DATA" count="30" distribution="random">
+      
+
+<attribute name="id" pattern="[0-9]{13}"/>
+<attribute name="maskedid" pattern="[0-9]{13}"/>
+<attribute name="as_of_dt" pattern="2009/06/29"/>
+<attribute name="per_id" pattern="[0-9A-ZA-Z]{6}"/>
+<attribute name="exec_ts" pattern="2009/06/30 13:30:10"/>
+<attribute name="prem_in" pattern="[0-9]{2}"/>
+<attribute name="srvc_canc_cd" pattern="[0-9A-ZA-Z]{10}"/>
+<attribute name="optn_strt_dt" pattern="2009/06/29"/>
+<attribute name="attr_cd" pattern="[0-9]{11}"/>
+ 
+
+
+                <consumer class="CSVEntityExporter">
+                        <property name="uri"
+                                value="../test/setup/data/" />
+                        <property name="columns" value="id,maskedid,as_of_dt,per_id,exec_ts,prem_in,srvc_canc_cd,optn_strt_dt,attr_cd" />
+                        <property name="separator" value="\u0001\u0005\u0001##\u0002a@1\u0002" />
+                        <property name="headless" value="false" />
+                </consumer>
+        </generate>
+
+</setup>
